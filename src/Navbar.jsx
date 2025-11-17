@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router";
-import { useAuth } from "./auth/AuthContext";
+import { useAuth } from "../auth/AuthContext";
 
 function Navbar() {
   const { token, logout } = useAuth();
@@ -13,9 +13,12 @@ function Navbar() {
       <nav>
         <NavLink to="/books">Books</NavLink>
         {token ? (
-          <a href="#" onClick={logout}>
-            Log out
-          </a>
+          <>
+            <NavLink to="/account">Account</NavLink>
+            <a href="#" onClick={logout}>
+              Log out
+            </a>
+          </>
         ) : (
           <NavLink to="/login">Log in</NavLink>
         )}
